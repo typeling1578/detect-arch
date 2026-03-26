@@ -1,0 +1,40 @@
+{
+  "name": "detect-arch",
+  "version": "1.0.0",
+  "description": "​A CPU architecture detection library without relying on User Agent strings or Browser APIs.\nInferring the host CPU architecture by observing NaN bit patterns.",
+  "license": "MIT",
+  "author": "typeling1578 <pub@typeling1578.dev>",
+  "homepage": "https://github.com/typeling1578/detect-arch",
+  "bugs": "https://github.com/typeling1578/detect-arch/issues",
+  "main": "./dist/detect-arch.cjs",
+  "module": "./dist/detect-arch.mjs",
+  "types": "./types/detect-arch.d.ts",
+  "exports": {
+    ".": {
+      "types": "./types/detect-arch.d.ts",
+      "import": "./dist/detect-arch.mjs",
+      "require": "./dist/detect-arch.cjs"
+    }
+  },
+  "engines": {
+    "node": ">=20"
+  },
+  "files": [
+    "dist",
+    "src",
+    "types",
+    "README.md",
+    "LICENSE",
+    "CREDITS.md"
+  ],
+  "scripts": {
+    "build:native": "emcc ./src/native/detect-arch.c -O0 -s -o ./build/detect-arch-native.mjs -s EXPORTED_FUNCTIONS='[\"_isX86\",\"_isArm\",\"_isRiscV\"]' -s MODULARIZE=1 -s EXPORT_ES6=1 -s ENVIRONMENT=web,node -s SINGLE_FILE=1",
+    "build": "pnpm run build:native && rollup -c"
+  },
+  "devDependencies": {
+    "@rollup/plugin-commonjs": "^29.0.2",
+    "@rollup/plugin-node-resolve": "^16.0.3",
+    "@rollup/plugin-terser": "^1.0.0",
+    "rollup": "^4.59.0"
+  }
+}
