@@ -42,7 +42,7 @@
     "CREDITS.md"
   ],
   "scripts": {
-    "build:native": "emcc ./src/native/detect-arch.c -O0 -s -o ./build/detect-arch-native.mjs -s EXPORTED_FUNCTIONS='[\"_isX86\",\"_isArm\",\"_isRiscV\"]' -s MODULARIZE=1 -s EXPORT_ES6=1 -s ENVIRONMENT=web,node -s SINGLE_FILE=1",
+    "build:native": "mkdir -p build && emcc ./src/native/detect-arch.c -O0 -s -o ./build/detect-arch-native.mjs -s EXPORTED_FUNCTIONS='[\"_isX86\",\"_isArm\",\"_isRiscV\"]' -s MODULARIZE=1 -s EXPORT_ES6=1 -s ENVIRONMENT=web,node -s SINGLE_FILE=1",
     "build": "pnpm run build:native && rollup -c"
   },
   "devDependencies": {
