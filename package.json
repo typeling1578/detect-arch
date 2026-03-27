@@ -1,8 +1,16 @@
 {
   "name": "detect-arch",
   "version": "1.0.0",
+  "publishConfig": {
+    "access": "public"
+  },
   "description": "​A CPU architecture detection library without relying on User Agent strings or Browser APIs.\nInferring the host CPU architecture by observing NaN bit patterns.",
   "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/typeling1578/detect-arch.git"
+  },
+  "keywords": ["arch", "architecture", "cpu", "cpu info", "browser"],
   "author": "typeling1578 <pub@typeling1578.dev>",
   "homepage": "https://github.com/typeling1578/detect-arch",
   "bugs": "https://github.com/typeling1578/detect-arch/issues",
