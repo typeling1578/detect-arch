@@ -25,6 +25,7 @@ jobs:
           sudo ./emsdk activate latest
           echo "/opt/emsdk" >> $GITHUB_PATH
           echo "/opt/emsdk/upstream/emscripten" >> $GITHUB_PATH
+          echo "EM_CACHE=$HOME/.emscripten_cache" >> $GITHUB_ENV
 
       - name: Install Node.js
         uses: actions/setup-node@v6
