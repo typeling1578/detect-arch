@@ -14,13 +14,32 @@ jobs:
   publish:
     runs-on: ubuntu-24.04
     steps:
-      - uses: actions/checkout@v6
+      - name: Clone repository
+        uses: actions/checkout@v6
 
-      - uses: actions/setup-node@v6
+      - name: Install emscripten
+        run: |
+          sudo git clone https://github.com/emscripten-core/emsdk /opt/emsdk
+          cd /opt/emsdk
+          sudo ./emsdk install latest
+          sudo ./emsdk activate latest
+          echo "/opt/emsdk" >> $GITHUB_PATH
+          echo "/opt/emsdk/upstream/emscripten" >> $GITHUB_PATH
+
+      - name: Install Node.js
+        uses: actions/setup-node@v6
         with:
           node-version: '24'
           registry-url: 'https://registry.npmjs.org'
-      - run: corepack enable pnpm
-      - run: pnpm install --frozen-lockfile
-      - run: pnpm run build
-      - run: pnpm publish --provenance --dry-run
+
+      - name: Enable PNPM
+        run: corepack enable pnpm
+
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+
+      - name: Build
+        run: pnpm run build
+
+      - name: Publish
+        run: pnpm publish --provenance --dry-run
