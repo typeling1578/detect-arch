@@ -10,6 +10,43 @@ Inferring the host CPU architecture by observing NaN bit patterns.
 $ pnpm install detect-arch
 ```
 
+## Usage
+
+### ESM
+
+```
+import detectArch from "detect-arch";
+
+console.log("isX86:", await detectArch.isX86());
+console.log("isArm:", await detectArch.isArm());
+console.log("isRiscV:", await detectArch.isRiscV());
+```
+
+### CJS
+
+```
+const detectArch = require("detect-arch");
+
+(async () => {
+  console.log("isX86:", await detectArch.isX86());
+  console.log("isArm:", await detectArch.isArm());
+  console.log("isRiscV:", await detectArch.isRiscV());
+})();
+```
+
+### Script tag
+
+```
+<script src="https://cdn.jsdelivr.net/npm/detect-arch@1/dist/detect-arch.iife.min.js"></script>
+<script>
+(async () => {
+  console.log("isX86:", await detectArch.isX86());
+  console.log("isArm:", await detectArch.isArm());
+  console.log("isRiscV:", await detectArch.isRiscV());
+})();
+</script>
+```
+
 ## Build
 
 ```bash
