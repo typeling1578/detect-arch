@@ -1,5 +1,8 @@
 # detect-arch
 
+[![](https://img.shields.io/npm/v/detect-arch)](https://www.npmjs.com/package/detect-arch)
+[![](https://img.shields.io/npm/dm/detect-arch)](https://www.npmjs.com/package/detect-arch)
+
 ​A CPU architecture detection library without relying on User Agent strings or Browser APIs.
 
 Inferring the host CPU architecture by observing NaN bit patterns.
